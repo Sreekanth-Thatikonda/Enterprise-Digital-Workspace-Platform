@@ -1,0 +1,17 @@
+{
+  "name": "enterprise-digital-workspace-platform",
+  "private": true,
+  "packageManager": "pnpm@9.0.0",
+  "scripts": {
+    "dev": "pnpm -r --parallel run dev",
+    "build": "pnpm -r run build",
+    "test": "pnpm -r run test",
+    "lint": "pnpm -r run lint"
+  },
+  "devDependencies": {
+    "@originjs/vite-plugin-federation": "^1.4.1",
+    "@types/node": "^20.11.0",
+    "nx": "latest",
+    "typescript": "^5.4.0"
+  }
+}
