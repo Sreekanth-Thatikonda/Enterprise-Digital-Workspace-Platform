@@ -1,6 +1,6 @@
 import { Component, ElementRef, inject, Input, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { loadRemoteModule } from '@angular-architects/native-federation';
+import { loadRemoteModule } from '@angular-architects/module-federation';
 import * as React from 'react';
 import { createRoot, Root } from 'react-dom/client';
 
@@ -16,7 +16,7 @@ export class ReactWrapperComponent implements OnInit, OnDestroy {
   async ngOnInit() {
     const { remote, exposedModule } = this.route.snapshot.data;
     try {
-        const m = await loadRemoteModule(remote, exposedModule);
+        const m = await loadRemoteModule({ remoteName: remote, exposedModule });
         const ReactComp = m.default || m.App;
         
         const container = this.elm.nativeElement.querySelector('#react-root');

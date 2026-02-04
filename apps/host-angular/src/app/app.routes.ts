@@ -1,14 +1,22 @@
 import { Routes } from '@angular/router';
-import { loadRemoteModule } from '@angular-architects/native-federation';
+import { loadRemoteModule } from '@angular-architects/module-federation';
 
 export const routes: Routes = [
   {
     path: 'admin',
-    loadChildren: () => loadRemoteModule('remote-angular-admin', './Component').then((m) => m.AppComponent),
+    loadChildren: () => loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:5003/remoteEntry.js',
+        exposedModule: './Component'
+    }).then((m) => m.AppComponent),
   },
   {
     path: 'reports',
-    loadComponent: () => loadRemoteModule('remote-angular-reports', './Component').then((m) => m.AppComponent),
+    loadComponent: () => loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:5004/remoteEntry.js',
+        exposedModule: './Component'
+    }).then((m) => m.AppComponent),
   },
   // React routes will need a wrapper, placeholding for now
   {

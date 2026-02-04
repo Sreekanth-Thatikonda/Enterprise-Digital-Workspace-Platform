@@ -1,5 +1,5 @@
 
-import React from 'react';
+import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 
 const LandingPage: React.FC = () => {
@@ -19,7 +19,7 @@ const LandingPage: React.FC = () => {
         <section className="hero">
           <h2>Welcome to the Next Gen HR Platform</h2>
           <p>Manage efficient workflows with our Digital Workspace.</p>
-          <button className="cta-button">Get Started</button>
+          <Button label="Get Started" className="cta-button" onClick={() => console.log('Get Started')} />
         </section>
 
         <section className="features">
