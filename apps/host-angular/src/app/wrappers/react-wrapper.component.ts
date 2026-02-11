@@ -16,7 +16,7 @@ export class ReactWrapperComponent implements OnInit, OnDestroy {
   async ngOnInit() {
     const { remote, exposedModule } = this.route.snapshot.data;
     try {
-        const m = await loadRemoteModule({ remoteName: remote, exposedModule });
+        const m = await loadRemoteModule({ remoteName: remote, exposedModule }) as any;
         const ReactComp = m.default || m.App;
         
         const container = this.elm.nativeElement.querySelector('#react-root');

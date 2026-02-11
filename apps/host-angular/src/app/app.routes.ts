@@ -1,7 +1,25 @@
 import { Routes } from '@angular/router';
 import { loadRemoteModule } from '@angular-architects/module-federation';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
+  {
+    path: 'signup',
+    loadComponent: () => import('./signup/signup.component').then(m => m.SignupComponent)
+  },
   {
     path: 'admin',
     loadChildren: () => loadRemoteModule({
